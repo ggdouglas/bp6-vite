@@ -1,14 +1,27 @@
-import React from "react";
-import { Button } from "@blueprintjs/core";
+import { Button, Dialog, DialogBody, DialogFooter } from "@blueprintjs/core";
+import { useCallback, useState } from "react";
 import "./App.css";
 
 function App() {
-  // log react version in console
-  console.log("React version:", React.version);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = useCallback(() => setIsOpen((value) => !value), []);
+
+  const handleClose = useCallback(() => setIsOpen(false), []);
 
   return (
     <div className="app">
-      <Button>Hello world</Button>
+      <Button onClick={handleClick} text="Show dialog" />
+      <Dialog isOpen={isOpen} onClose={handleClose} title="Dialog">
+        <DialogBody>
+          <p>This is a simple dialog example using Blueprint.js.</p>
+        </DialogBody>
+        <DialogFooter
+          actions={
+            <Button intent="primary" onClick={handleClose} text="Close" />
+          }
+        />
+      </Dialog>
     </div>
   );
 }
