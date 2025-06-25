@@ -1,16 +1,21 @@
+import { Code, Divider, H1, H5 } from "@blueprintjs/core";
+import React from "react";
 import { createBrowserRouter, NavLink, RouterProvider } from "react-router";
+import { ContextMenuExample } from "./examples/ContextMenuExample";
 import { DateInputExample } from "./examples/DateInputExample";
 import { DialogExample } from "./examples/DialogExample";
+import { DrawerExample } from "./examples/DrawerExample";
 import { MultiSelectExample } from "./examples/MultiSelectExample";
 import { Overlay2Example } from "./examples/Overlay2Example";
 import { OverlayExample } from "./examples/OverlayExample";
+import { PopoverExample } from "./examples/PopoverExample";
 import { SelectExample } from "./examples/SelectExample";
+import { ToastExample } from "./examples/ToastExample";
 import { TooltipExample } from "./examples/TooltipExample";
 import "./App.css";
-import { ContextMenuExample } from "./examples/ContextMenuExample";
-import { DrawerExample } from "./examples/DrawerExample";
-import { PopoverExample } from "./examples/PopoverExample";
-import { ToastExample } from "./examples/ToastExample";
+import packageJson from "../package.json";
+
+const coreVersion = packageJson.dependencies["@blueprintjs/core"];
 
 interface Example {
   path: string;
@@ -51,6 +56,14 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="app">
+      <H1>Blueprint Examples</H1>
+      <Divider />
+      <H5>
+        React version: <Code>{React.version}</Code>
+      </H5>
+      <H5>
+        Blueprint version: <Code>{coreVersion}</Code>
+      </H5>
       <div className="examples">
         <RouterProvider router={router} />
       </div>

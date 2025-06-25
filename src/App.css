@@ -1,9 +1,10 @@
 #root {
-  padding: 40px;
+  padding: 20px;
 }
 
 .app {
   display: flex;
+  flex-direction: column;
 }
 
 .examples {
