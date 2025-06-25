@@ -1,11 +1,14 @@
 import { Button, OverlayToaster } from "@blueprintjs/core";
 import { useCallback } from "react";
 
-const toaster = await OverlayToaster.create();
+const toaster = OverlayToaster.create();
 
 export function ToastExample() {
-  const handleClick = useCallback(() => {
-    toaster.show({ message: "This is a toast message!", intent: "success" });
+  const handleClick = useCallback(async () => {
+    (await toaster).show({
+      message: "This is a toast message!",
+      intent: "success",
+    });
   }, []);
 
   return (
